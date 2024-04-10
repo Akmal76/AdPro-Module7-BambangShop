@@ -62,12 +62,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -94,6 +94,17 @@ Menurut saya, sudah tepat menggunakan `DashMap`. Jika kita menggunakan `Vec`, pe
 Aplikasi BambangShop merupakan aplikasi yang menggunakan _multi-threading_ sehingga kita perlu menggunakan `DashMap` dibandingkan dengan Singleton _pattern_. Kenapa? Karena `DashMap` merupakan _thread-safe HashMap_ yang mendukung _concurrent access_. Dengan begitu, data `SUBSCRIBERS` dapat diakses secara _concurrency_ tanpa ada isu. Jika menggunakan pendekatan Singleton _pattern_, objek hanya memiliki satu _instance_ selama program berjalan.  Dengan begitu, ketika program dijalankan dalam _multi-threading_, kita perlu melakukan _locking_ pada objek. Namun, hal tersebut membuat program menjadi lebih kompleks dan rawan _deadlock_.
 
 #### Reflection Publisher-2
+> In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model? 
+
+Agar mudah di-_maintability_ dan bersifat _modularity_ dan _scalability_ dengan prinsip **Single Responsibility** dimana sebuah _class_ harus memiliki satu kepentingan. Dengan memisahkan _Service_ dan _Repository_ dari _Model_, kita bisa memisahkan antara _business logic_ dan _data access_ sehingga lebih mudah untuk di-_test_ dan di-_debug_. 
+
+> What happens if we only use the Model? Explain your imagination on how the interactions between each model (`Program`, `Subscriber`, `Notification`) affect the code complexity for each model?
+
+Dampaknya adalah kode akan menjadi **lebih kompleks** dan **sulit untuk di-_maintain_**. **_Coupling_** antar dua _class_ akan **menjadi lebih tinggi** sehingga jika dilakukan suatu perubahan maka dampaknya akan banyak perubahan juga dibanding jika kita memisahkan _business logic_ dan _data access_.
+
+> Have you explored more about **Postman**? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+ 
+Dengan Postman, saya dapat melakukan API _Testing_. Saya dapat melihat hasil dari _request_ yang saya kirimkan dan memastikan bahwa _response_ yang saya terima sudah sesuai dengan yang saya harapkan.  Salah satu fitur pendukungnya yaitu _Collection_ yang bisa mengelompokkan _request_ berdasarkan _folder_ dan _Environment_ memungkinkan saya untuk menyimpan _variable_ yang sering saya gunakan.
 
 #### Reflection Publisher-3
 
