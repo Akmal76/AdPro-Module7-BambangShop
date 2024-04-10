@@ -1,6 +1,8 @@
 # BambangShop Publisher App
 Tutorial and Example for Advanced Programming 2024 - Faculty of Computer Science, Universitas Indonesia
 
+**Akmal Ramadhan - Advanced Programming A - 2023-2024 Genap**
+
 ---
 
 ## About this Project
@@ -50,15 +52,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Commit: `Create Subscriber model struct.`
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Subscriber repository.`
+    -   [x] Commit: `Implement list_all function in Subscriber repository.`
+    -   [x] Commit: `Implement delete function in Subscriber repository.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -79,7 +81,19 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+> In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or `trait` in Rust) in this BambangShop case, or a single Model `struct` is enough?
+
+Untuk kasus sekarang ini, saya rasa **tidak perlu** menggunakan _interface_ (`trait`) dan cukup menggunakan _single Model `struct`._ Kenapa? Karena _observer_-nya hanya satu yaitu _class_ Subscriber. Penggunaan _interface_ akan berguna ketika kita memiliki banyak _observer_ yang jenisnya berbeda-beda.
+
+> `id` in `Program` and `url` in `Subscriber` is intended to be unique. Explain based on your understanding, is using `Vec` (list) sufficient or using `DashMap` (map/dictionary) like we currently use is necessary for this case?
+
+Menurut saya, sudah tepat menggunakan `DashMap`. Jika kita menggunakan `Vec`, perlu membuat dua buah _array_ untuk menyimpan `id` dan `url` yang berbeda dan kita perlu iterasi isi _array_ untuk mencari nilai pasangan `id` dan `url`. Dengan menggunakan `DashMap`, kita bisa menyimpan `id` dan `url` dalam satu struktur saja sehingga penggunaannya lebih mudah. Terakhir, `DashMap` mendukung _concurrent access_ sehingga lebih aman digunakan jika kedepannya aplikasi ini akan di-_deploy_ dalam _multi-threading_.
+
+> When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (`SUBSCRIBERS`) static variable, we used the `DashMap` external library for `thread safe HashMap`. Explain based on your understanding of design patterns, do we still need `DashMap` or we can implement Singleton pattern instead?
+
+Aplikasi BambangShop merupakan aplikasi yang menggunakan _multi-threading_ sehingga kita perlu menggunakan `DashMap` dibandingkan dengan Singleton _pattern_. Kenapa? Karena `DashMap` merupakan _thread-safe HashMap_ yang mendukung _concurrent access_. Dengan begitu, data `SUBSCRIBERS` dapat diakses secara _concurrency_ tanpa ada isu. Jika menggunakan pendekatan Singleton _pattern_, objek hanya memiliki satu _instance_ selama program berjalan.  Dengan begitu, ketika program dijalankan dalam _multi-threading_, kita perlu melakukan _locking_ pada objek. Namun, hal tersebut membuat program menjadi lebih kompleks dan rawan _deadlock_.
 
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
+
