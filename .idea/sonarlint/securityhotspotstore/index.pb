@@ -15,3 +15,13 @@ L
 src/repository/subscriber.rs,e/c/eca67c480b271ae050c58ad4df5f0907d1db0013
 E
 src/repository/mod.rs,1/e/1e5fab9632071c9cc56c3f0ad6ac38e9b890d633
+D
+src/model/product.rs,f/e/feff7e73ec5e0d55809da92f28e5e75702c9264a
+K
+src/service/notification.rs,8/1/81a8c14719c3197ce8a94f464c53ddc658b51c49
+B
+src/service/mod.rs,c/8/c820ae38a546679a83c08cd08a884464d4a0e34e
+N
+src/controller/notification.rs,f/e/feeae9b8cc51c20dc5c6a76bbf46751d2da708e3
+E
+src/controller/mod.rs,e/2/e288bf9ffd16269f64107ebd8fadffad01843a5d
