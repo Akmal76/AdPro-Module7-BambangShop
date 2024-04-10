@@ -25,3 +25,7 @@ N
 src/controller/notification.rs,f/e/feeae9b8cc51c20dc5c6a76bbf46751d2da708e3
 E
 src/controller/mod.rs,e/2/e288bf9ffd16269f64107ebd8fadffad01843a5d
+F
+src/service/product.rs,b/b/bb9f6f8ea8b01bd3a7786dc5eff25818b412eab5
+I
+src/controller/product.rs,4/e/4ea8109adf02d7320cf844d28ed1b867ce33fd68
